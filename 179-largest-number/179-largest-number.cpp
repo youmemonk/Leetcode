@@ -1,23 +1,16 @@
 class Solution {
 public:
-    static bool compare(string a, string b){
+    static bool comp(string a, string b){
         return a+b > b+a;
     }
     
     string largestNumber(vector<int>& nums) {
-        int n = nums.size();
         vector<string> numString;
         string ans = "";
+        for(int num : nums) numString.push_back(to_string(num));
         
-        for(int num : nums){
-            string s = to_string(num);
-            numString.push_back(s);
-        }
-        
-        sort(numString.begin(), numString.end(), compare);        
+        sort(numString.begin(), numString.end(), comp);
         for(string s : numString) ans += s;
-        
-        //leading zeros
-        return (ans[0] == '0') ? "0" : ans;
+        return (ans[0] == '0' ? "0" : ans);
     }
 };
