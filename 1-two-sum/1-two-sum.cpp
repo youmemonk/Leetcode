@@ -6,15 +6,14 @@ public:
         vector<int> ans;
         
         for(int i = 0; i < n; i++){
-            hm.insert({nums[i], i});
-        }
-        
-        for(int i = 0; i < n; i++){
             int a = nums[i], b = target - a;
-            if(hm.find(b) != hm.end() && hm[b] != i){
+            if(hm.find(b) != hm.end()){
                 ans.push_back(i);
                 ans.push_back(hm[b]);
                 break;
+            }
+            else{
+                hm.insert({nums[i], i});
             }
         }
         
