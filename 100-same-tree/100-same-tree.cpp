@@ -11,14 +11,13 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {        
-        if(!p && !q) return true;
-        if(!p || !q) return (p == q);
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(!p or !q) return (p == q);
         
-        bool root = p->val == q->val;
+        bool roots = p->val == q->val;
         bool lefts = isSameTree(p->left, q->left);
         bool rights = isSameTree(p->right, q->right);
         
-        return (root && lefts && rights);
+        return (roots and lefts and rights);
     }
 };
