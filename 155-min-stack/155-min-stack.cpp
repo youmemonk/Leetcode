@@ -1,45 +1,32 @@
-class Node {
-public:
-    int val;
-    int minVal;
-    Node* next;
-    
-    Node(int val, int minVal){
-        this->val = val;
-        this->minVal = minVal;
-        next = NULL;
-    }
-};
-
-Node* head;
-
 class MinStack {
+private:
+    stack<int> a;
+    stack<int> b;
 public:
-    MinStack() {
-        head = NULL;
-    }
+    MinStack() {}
     
     void push(int val) {
-        if(head == NULL){
-            head = new Node(val, val);
+        if(a.empty()){
+            a.push(val);
+            b.push(val);
         }
         else{
-            Node* newHead = new Node(val, min(val, head->minVal));
-            newHead->next = head;
-            head = newHead;
+            a.push(val);
+            b.push(min(a.top(), b.top()));
         }
     }
     
     void pop() {
-        head = head->next;
+        a.pop();
+        b.pop();
     }
     
     int top() {
-        return head->val;
+        return a.top();
     }
     
     int getMin() {
-        return head->minVal;
+        return b.top();
     }
 };
 
