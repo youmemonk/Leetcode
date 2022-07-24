@@ -1,29 +1,30 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
-        // TC: O(M*N) SC: O(M+N)
-        vector<int> rows;
-        vector<int> cols;
+        vector<int> r;
+        vector<int> c;
         
-        for(int i=0; i<matrix.size(); i++){
-            for(int j=0; j<matrix[0].size(); j++){
+        int m = matrix.size(), n = matrix[0].size();
+        for(int i = 0;  i < m; i++){
+            for(int j = 0; j < n; j++){
                 if(matrix[i][j] == 0){
-                    rows.push_back(i);
-                    cols.push_back(j);
+                    r.push_back(i);
+                    c.push_back(j);
                 }
             }
         }
         
-        for(int row : rows){
-            for(int j=0; j<matrix[0].size(); j++){
-                matrix[row][j] = 0;
+        for(int i = 0; i < r.size(); i++){
+            for(int j = 0; j < n; j++){
+                matrix[r[i]][j] = 0;
             }
         }
         
-        for(int col : cols){
-            for(int i=0; i<matrix.size(); i++){
-                matrix[i][col] = 0;
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < c.size(); j++){
+                matrix[i][c[j]] = 0;
             }
         }
+        
     }
 };
