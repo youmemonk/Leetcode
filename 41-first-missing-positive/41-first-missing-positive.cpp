@@ -1,20 +1,20 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        //O(n) time, O(n) space
-        int n = nums.size(), i;
-        set<int> s;
-        
-        for(int num : nums){
-            s.insert(num);
+        int n = nums.size();
+        for(int i = 0; i < n; i++){
+            if(nums[i] <= 0) nums[i] = n + 1;
         }
         
-        for(i = 1; i <= nums.size(); i++){
-            if(s.find(i) == s.end()){
-                return i;
-            }
+        for(int i = 0; i < n; i++){
+            int idx = abs(nums[i]);
+            if(idx <= n && nums[idx - 1] > 0) nums[idx - 1] *= -1;
         }
         
-        return i;
+        for(int i = 0; i < n; i++){
+            if(nums[i] >= 0) return (i + 1);
+        }
+        
+        return (n + 1);
     }
 };
