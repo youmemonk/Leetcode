@@ -10,13 +10,12 @@ public:
     }
     
     int sumRange(int left, int right) {
-        // return accumulate(nums.begin() + left, nums.begin() + right + 1, 0);
-        return (left-1>=0) ? ps[right] - ps[left-1] : ps[right];
+        return (left == 0) ? ps[right] : ps[right] - ps[left - 1];
     }
     
     void prefixSumCalc(vector<int> nums){
-        for(int i=0; i<nums.size(); i++){
-            (i==0) ? ps[i] = nums[i] : ps[i] = ps[i-1] + nums[i];
+        for(int i = 0; i < nums.size(); i++){
+            ps[i] = (i == 0) ? nums[i] : ps[i-1] + nums[i];
         }
     }
 };
