@@ -6,7 +6,6 @@ public:
         
         sort(intervals.begin(), intervals.end());
         vector<int> tempInterval = intervals[0];
-        
         for(auto it : intervals){
             if(it[0] <= tempInterval[1]){
                 tempInterval[0] = min(it[0], tempInterval[0]);
