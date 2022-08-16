@@ -2,16 +2,17 @@ class Solution {
 public:
     int firstUniqChar(string s) {
         int n = s.length();
-        unordered_map<char, int> hm;
+        unordered_map<char, int> mp;
         
         for(int i = 0; i < n; i++){
-            if(hm.find(s[i]) == hm.end()) hm.insert({s[i], 1});
-            else hm[s[i]]++;
+            if(mp.find(s[i]) == mp.end()) mp[s[i]] = 1;
+            else mp[s[i]]++;
         }
         
         for(int i = 0; i < n; i++){
-            if(hm[s[i]] == 1) return i;
+            if(mp[s[i]] == 1) return i;
         }
+        
         return -1;
     }
 };
