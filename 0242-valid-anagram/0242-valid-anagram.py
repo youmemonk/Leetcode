@@ -7,5 +7,5 @@ class Solution:
         for i in range(len(s)):
             sm[s[i]] = 1 + sm.get(s[i], 0)
             tm[t[i]] = 1 + tm.get(t[i], 0)
-            
+
         return (sm == tm)
