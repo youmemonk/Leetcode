@@ -2,13 +2,10 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
         unordered_set<int> hashset;
-            
-        for(int i = 0; i < nums.size(); i++){
-            if(hashset.find(nums[i]) != hashset.end()) return true;
-            
-            hashset.insert(nums[i]);
+        for(auto num: nums){
+            if(hashset.find(num) != hashset.end()) return true;
+            hashset.insert(num);
         }
-        
         return false;
     }
 };
